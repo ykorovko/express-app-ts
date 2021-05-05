@@ -1,4 +1,4 @@
-# Easytips App - Express / TypeScript / TypeORM
+# Express / TypeScript / TypeORM
 
 ## Requirements
 

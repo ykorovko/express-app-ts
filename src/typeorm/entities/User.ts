@@ -18,6 +18,15 @@ export class User {
   @Column()
   password: string
 
+  @Column({ nullable: true })
+  oath: boolean
+
+  @Column({ nullable: true })
+  temp_secret: string
+
+  @Column({ nullable: true })
+  secret: string
+
   @Column()
   @CreateDateColumn()
   created_at: Date

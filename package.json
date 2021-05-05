@@ -37,6 +37,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
+    "speakeasy": "^2.0.0",
     "typeorm": "^0.2.32",
     "typeorm-naming-strategies": "^2.0.0"
   },
@@ -48,6 +49,7 @@
     "@types/faker": "^5.5.3",
     "@types/morgan": "^1.9.2",
     "@types/node": "^15.0.1",
+    "@types/speakeasy": "^2.0.5",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",

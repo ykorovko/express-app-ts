@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
+import speakeasy from 'speakeasy'
 import { getRepository } from 'typeorm'
 
 import { User } from '../../typeorm/entities/User'
@@ -30,10 +31,14 @@ export const register = async (req: Request<null, null, RequestBody>, res: Respo
     try {
       const newUser = new User()
 
+      // Create temporary secret until it it verified
+      const temp_secret = speakeasy.generateSecret()
+
       newUser.fullname = fullname
       newUser.phone = phone
       newUser.email = email
       newUser.password = password
+      newUser.temp_secret = temp_secret.base32
 
       newUser.hashPassword()
 
@@ -49,7 +54,10 @@ export const register = async (req: Request<null, null, RequestBody>, res: Respo
 
       await userRepository.save(newUser)
 
-      res.customSuccess(200, 'User successfully created.', { token, user: newUser })
+      res.customSuccess(200, 'User successfully created.', {
+        token,
+        user: newUser
+      })
     } catch (err) {
       const customError = new CustomError(400, 'Raw', `User '${email}' can't be created`, null, err)
 
